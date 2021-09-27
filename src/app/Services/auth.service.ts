@@ -37,6 +37,17 @@ export class AuthService {
     return sessionStorage.getItem('isActivated');
   }
 
+  isUserAdmin(){
+    const userRole = sessionStorage.getItem("userRole");
+
+    if( userRole === 'User' ){
+      return false;
+    }else if( userRole === 'Admin' ){
+      return true;
+    }
+
+    return false;
+  }
 
   isUSerAutheniticated(){
     const token = sessionStorage.getItem("jwt");

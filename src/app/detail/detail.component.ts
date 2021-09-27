@@ -38,6 +38,9 @@ export class DetailComponent implements OnInit {
     }, 5000);
   }
 
+  isUserAdmin() {
+    return this.authService.isUserAdmin();
+  }
 
   productId: number = 1;
   async ngOnInit(): Promise<void> {

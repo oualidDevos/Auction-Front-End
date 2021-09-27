@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { environment } from 'src/environments/environment';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../Services/auth.service';
 import { ProductService } from '../Services/product.service';
 import { MainBidsViewModel } from '../viewModels/mainImagesViewModel';
 import { ShowProductViewModel } from '../viewModels/ShowProductViewModel';
@@ -23,7 +23,9 @@ export class BidsComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
 
-    // if( this.authService.i )
+    if( this.authService.isUserAdmin() === true ){
+      this.router.navigate(['auctions']);
+    }
 
     await this.ShowProducts();
     await this.MainProducts();

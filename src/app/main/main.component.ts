@@ -23,6 +23,14 @@ currentUrl: any;
 
   ngOnInit(): void {
     this.currentUrl = this.router.url === '/';
+
+    console.log(this.authService.isUserAdmin());
+
+
+    if( this.authService.isUserAdmin() === true ){
+      this.router.navigate(['/auctions']);
+    }
+
   }
 
   public getState(outlet: any) {
@@ -35,6 +43,11 @@ currentUrl: any;
     }else{
       return false;
     }
+  }
+
+
+  isUserAdmin(){
+    return this.authService.isUserAdmin();
   }
 
   isUserAuthenticated(){
