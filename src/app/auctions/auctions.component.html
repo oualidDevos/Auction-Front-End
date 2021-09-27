@@ -1,0 +1,86 @@
+<section class="ftco-section">
+  <!-- <div class="container"> -->
+    <div class="row">
+      <div class="col-md-12">
+        <!-- <div class="d-flex text-center"> -->
+
+          <h1 class="mb-4 text-center" style="align-self: center;"><img src="assets/auction.png" alt="" style="height: 50px;"> جميع المزايدات </h1>
+        <!-- </div> -->
+        <div class="table-wrap">
+          <table class="table">
+            <thead class="thead-primary">
+              <tr>
+                <!-- <th>&nbsp;</th> -->
+                <th>&nbsp;</th>
+                <th>المحل</th>
+                <th>المساحة</th>
+                <th>النشاط</th>
+                <th>تاريخ بدء المزاد</th>
+                <th>مزيد من المعلومات</th>
+                <th>لائحة المزايدات</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let product of list" style="border-bottom: 2px solid #f8f9fd;">
+                <td></td>
+                <td class="border-bottom-0">
+                  <div class="">
+                    <span style="font-size: large;">{{ product.product.title }}</span>
+                    <br>
+                    <span>{{ product.product.number }}</span>
+                  </div>
+                </td>
+                <td class="border-bottom-0">
+                  <span style="font-size: large;">{{ product.product.surface }} متر مربع</span>
+                </td>
+                <td class="border-bottom-0">
+                  <span style="font-size: large;">{{ product.product.activity.name }}</span>
+                </td>
+                <td class="border-bottom-0">
+                  <span style="font-size: large;">{{ formatDate(product.startDate) }}</span>
+                </td>
+                <td class="border-bottom-0" (click)="detailProduct(product.productId)">
+                  <span style="font-size: large; cursor: pointer;"><i class="fas fa-copy"></i></span>
+                </td>
+                <td class="border-bottom-0">
+                  <span style="font-size: large;"><i class="fas fa-copy"></i></span>
+                </td>
+              </tr>
+
+              <!-- <tr class="alert"  role="alert" *ngFor="let product of this.myOwnBidsViewModel?.data"> -->
+                <!-- <td class="border-bottom-0">
+                  <label class="checkbox-wrap checkbox-primary">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                  </label>
+                </td> -->
+                <!-- <td class="border-bottom-0">
+                  <div class="img" *ngIf="product.attachment != null" ><img #src routerLink="/bid/{{product.product.id}}" class="img" [src]="getAttachement(product.attachment.contentType, product.attachment.file)" alt=""></div>
+                  <div class="img" *ngIf="product.attachment == null" ><img #src routerLink="/bid/{{product.product.id}}" class="img" src="https://c.tenor.com/tEBoZu1ISJ8AAAAC/spinning-loading.gif" alt=""></div>
+                </td> -->
+                <!-- <td class="border-bottom-0">
+                  <div class="">
+                    <span style="font-size: large;">{{product.product.title}}</span>
+                    <br>
+                    <span>{{ product.product.description }}</span>
+                  </div>
+                </td> -->
+                <!-- <td class="border-bottom-0">{{ product.bidsNumber }}</td>
+                <td class="border-bottom-0">{{ product.productLatestBid ?? 0| number: "4.0" }}</td>
+                <td class="border-bottom-0">{{ product.productLatestRentBid ?? 0 | number: "4.0" }}</td>
+                <td class="border-bottom-0">{{ product.latestBid ?? 0 | number: "4.0"}}</td>
+                <td class="border-bottom-0">{{ product.latestRentBid ?? 0 | number: "4.0"}}</td> -->
+              <!-- </tr> -->
+
+
+              <!-- <tr *ngIf="this.myOwnBidsViewModel && this.myOwnBidsViewModel.data.length == 0">
+                <td style="text-align: center" colspan="9">ليس هناك معلومات</td>
+              </tr> -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <ngb-pagination [collectionSize]="70" [(page)]="page" aria-label="Default pagination"></ngb-pagination>
+  <!-- </div> -->
+</section>

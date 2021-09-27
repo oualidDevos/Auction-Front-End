@@ -20,8 +20,9 @@ export class MyBidsComponent implements OnInit {
   async ngOnInit(): Promise<void> {
 
     const isActivated = sessionStorage.getItem('isActivated');
+    const isAdmin = sessionStorage.getItem('userRole');
 
-    if( isActivated ){
+    if( isActivated && isAdmin === 'User'){
       if( isActivated == "false" ){
         this.router.navigate(["/"]);
       }
@@ -29,7 +30,7 @@ export class MyBidsComponent implements OnInit {
 
     const bidderId = sessionStorage.getItem('bidderId');
     if( bidderId ) {
-      await this.bidderService.getOwnBids2(bidderId).toPromise()
+      await this.bidderService.getOwnBids(bidderId).toPromise()
       .then(
         m=> {
           this.myOwnBidsViewModel = m;

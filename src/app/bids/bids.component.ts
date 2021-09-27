@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { NgbCarousel, NgbSlideEvent, NgbSlideEventSource } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { environment } from 'src/environments/environment';
+import { AuthService } from '../auth.service';
 import { ProductService } from '../Services/product.service';
 import { MainBidsViewModel } from '../viewModels/mainImagesViewModel';
 import { ShowProductViewModel } from '../viewModels/ShowProductViewModel';
@@ -15,12 +16,15 @@ import { ShowProductViewModel } from '../viewModels/ShowProductViewModel';
 })
 export class BidsComponent implements OnInit {
 
-  constructor(private router:Router, private productService: ProductService, private sanitizer: DomSanitizer, private spinner: NgxSpinnerService) { }
+  constructor(private authService: AuthService, private router:Router, private productService: ProductService, private sanitizer: DomSanitizer, private spinner: NgxSpinnerService) { }
 
   MainBidsViewModel: MainBidsViewModel | undefined;
 
 
   async ngOnInit(): Promise<void> {
+
+    // if( this.authService.i )
+
     await this.ShowProducts();
     await this.MainProducts();
 

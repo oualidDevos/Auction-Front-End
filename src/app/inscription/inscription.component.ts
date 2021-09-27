@@ -20,6 +20,11 @@ export class InscriptionComponent implements OnInit {
   activitiesViewModel?: ActivitiesViewModel;
 
   async ngOnInit(): Promise<void> {
+
+    if( this.authSevice.isUSerAutheniticated() === true){
+      this.router.navigate(['main'])
+    }
+
     await this.activityService.getActivities().toPromise().then(
       m=> {
         this.activitiesViewModel = m;

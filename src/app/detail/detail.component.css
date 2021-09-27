@@ -114,8 +114,8 @@ img {
     }
 
 
-    tbody, td, tfoot, th, thead, tr {
-      border-color: inherit;
-      border-style: none !important;
-      border-width: 0;
+  tbody, td, tfoot, th, thead, tr {
+    border: 1px solid grey;
   }
+
+

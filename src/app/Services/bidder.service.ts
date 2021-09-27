@@ -23,11 +23,11 @@ export class BidderService {
     return this.http.post<MakeBidViewModel>(this.baseUrl + "Bids", bid, this.httpOptions);
   }
 
-  getOwnBids(bidderId: string) {
-    return this.http.get<MyOwnBidsViewModel>(this.baseUrl + "bidders/getbiddersOwnBids/" + bidderId, this.httpOptions);
-  }
+  // getOwnBids(bidderId: string) {
+  //   return this.http.get<MyOwnBidsViewModel>(this.baseUrl + "bidders/getbiddersOwnBids/" + bidderId, this.httpOptions);
+  // }
 
-  getOwnBids2(bidderId: string) {
+  getOwnBids(bidderId: string) {
     return this.http.get<MyOwnBidsViewModel>(this.baseUrl + "bidders/GetOwnBidsWithouAttachments/" + bidderId, this.httpOptions);
   }
 

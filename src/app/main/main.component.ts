@@ -2,7 +2,7 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../Services/auth.service';
 import { trigger, transition, useAnimation } from '@angular/animations';
-import { scaleDownFromTop, scaleDownFromBottom } from 'ngx-router-animations';
+import { scaleDownFromTop, moveFromBottom } from 'ngx-router-animations';
 
 @Component({
   selector: 'app-main',
@@ -11,7 +11,7 @@ import { scaleDownFromTop, scaleDownFromBottom } from 'ngx-router-animations';
   animations: [
     trigger('scaleDownFromTop', [
       transition('trailer => register', useAnimation(scaleDownFromTop)),
-      transition('trailer => login', useAnimation(scaleDownFromBottom)),
+      transition('trailer => login', useAnimation(moveFromBottom)),
     ]),
   ],
 })

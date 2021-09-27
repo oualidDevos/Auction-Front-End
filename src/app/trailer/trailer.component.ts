@@ -1,7 +1,8 @@
+import { AuthService } from './../Services/auth.service';
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { trigger, transition, useAnimation } from '@angular/animations';
 import { scaleDownFromTop, scaleDownFromBottom } from 'ngx-router-animations';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-trailer',
@@ -19,6 +20,7 @@ import { ActivatedRoute } from '@angular/router';
   ],
 })
 export class TrailerComponent implements OnInit {
+
 
   change(event: any) {
     // console.log(event);
@@ -52,11 +54,13 @@ export class TrailerComponent implements OnInit {
     }
   }
 
-  constructor(private activated: ActivatedRoute) { }
+  constructor(private activated: ActivatedRoute, private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
 
-
+    if( this.authService.isUSerAutheniticated() === true){
+      this.router.navigate(['main'])
+    }
   //   video?.play().then(
   //     m=> {
   //       console.log(video)
