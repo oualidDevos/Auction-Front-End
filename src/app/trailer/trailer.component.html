@@ -1,0 +1,51 @@
+
+<!-- <h1>qsd</h1> -->
+<!-- <video autoplay muted loop class="myVVideo">
+  <source src="assets/PCPVideo.mp4" type="video/mp4">
+</video> -->
+
+<!-- <div class="video_wrapper z-index-0"> -->
+<!-- <div (click)="play(video)"> -->
+  <div class="login-wrapper" routerLink="/login">
+    <p style="text-align: center;"><i style="text-align: center;" id="login" class="fas fa-arrow-down"></i><br>تسجيل الدخول<br></p>
+  </div>
+
+
+  <!-- <video
+
+    #video
+    id="bgvid"
+    playsinline
+    autoplay
+    loop
+  >
+
+  <source
+      src="assets/PCPv3(1)(1)(1).mp4"
+      type="video/mp4"
+    />
+  </video> -->
+<!-- </div> -->
+
+<!-- <video autoplay  loop id="myVideo">
+  <source src="https://mouzayadati.sdmb.ma/assets/PCPVideo.mp4" type="video/mp4">
+</video> -->
+
+<div (click)="play(audio)">
+  <video playsinline
+  autoplay
+  loop id="myVideo" loop autoplay muted oncanplay="this.play()"  onloadedmetadata="this.muted = true">
+    <source src="assets/PCPVideo.mp4" type="video/mp4">
+  </video>
+
+
+  <audio  #audio controls autoplay loop style="display: none;">
+    <source src="assets/PCPv3.mp3" type="audio/mp3">
+    <source src="assets/PCPv3.mp3" type="audio/ogg">
+    <source src="assets/PCPv3.ogg" type="audio/ogg">
+  </audio>
+</div>
+
+
+
+

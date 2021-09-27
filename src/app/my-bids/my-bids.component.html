@@ -1,0 +1,75 @@
+<section class="ftco-section">
+  <!-- <div class="container"> -->
+    <div class="row">
+      <div class="col-md-12">
+        <!-- <div class="d-flex text-center"> -->
+
+          <h1 class="mb-4 text-center" style="align-self: center;"><img src="assets/auction.png" alt="" style="height: 50px;"> مزايداتي</h1>
+        <!-- </div> -->
+        <div class="table-wrap">
+          <table class="table">
+            <thead class="thead-primary">
+              <tr>
+                <!-- <th>&nbsp;</th> -->
+                <th>&nbsp;</th>
+                <th>المحل</th>
+                <th> عدد المزايدات</th>
+                <th [colSpan]="2" style="width: 13%;">آخر مزايدة</th>
+                <th [colSpan]="2" style="width: 13;">مزايدتي</th>
+                <!-- <th>Quantity</th> -->
+                <!-- <th>total</th> -->
+                <!-- <th>Details</th> -->
+              </tr>
+            </thead>
+            <thead class="thead-primary">
+              <tr>
+                <!-- <th>&nbsp;</th> -->
+                <th>&nbsp;</th>
+                <th></th>
+                <th></th>
+                <th style="width: 13%;">المساهمة</th>
+                <th>واجب الكراء</th>
+                <th>المساهمة</th>
+                <th>واجب الكراء</th>
+                <!-- <th>Quantity</th> -->
+                <!-- <th>total</th> -->
+                <!-- <th>Details</th> -->
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="alert"  role="alert" *ngFor="let product of this.myOwnBidsViewModel?.data">
+                <!-- <td class="border-bottom-0">
+                  <label class="checkbox-wrap checkbox-primary">
+                    <input type="checkbox">
+                    <span class="checkmark"></span>
+                  </label>
+                </td> -->
+                <td class="border-bottom-0">
+                  <div class="img" *ngIf="product.attachment != null" ><img #src routerLink="/bid/{{product.product.id}}" class="img" [src]="getAttachement(product.attachment.contentType, product.attachment.file)" alt=""></div>
+                  <div class="img" *ngIf="product.attachment == null" ><img #src routerLink="/bid/{{product.product.id}}" class="img" src="https://c.tenor.com/tEBoZu1ISJ8AAAAC/spinning-loading.gif" alt=""></div>
+                </td>
+                <td class="border-bottom-0">
+                  <div class="">
+                    <span style="font-size: large;">{{product.product.title}}</span>
+                    <br>
+                    <span>{{ product.product.description }}</span>
+                  </div>
+                </td>
+                <td class="border-bottom-0">{{ product.bidsNumber }}</td>
+                <td class="border-bottom-0">{{ product.productLatestBid ?? 0| number: "4.0" }}</td>
+                <td class="border-bottom-0">{{ product.productLatestRentBid ?? 0 | number: "4.0" }}</td>
+                <td class="border-bottom-0">{{ product.latestBid ?? 0 | number: "4.0"}}</td>
+                <td class="border-bottom-0">{{ product.latestRentBid ?? 0 | number: "4.0"}}</td>
+              </tr>
+
+
+              <tr *ngIf="this.myOwnBidsViewModel && this.myOwnBidsViewModel.data.length == 0">
+                <td style="text-align: center" colspan="9">ليس هناك معلومات</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  <!-- </div> -->
+</section>

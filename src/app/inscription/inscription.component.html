@@ -1,0 +1,347 @@
+<section class="gradient-form" >
+  <div class="container">
+    <div class="row d-flex justify-content-center align-items-center">
+      <div class="card mt-5 rounded-3 text-black p-5">
+        <div class="text-center">
+          <img
+          class="mb-3"
+            src="assets/LOGO PCP - HQ - PNG.png"
+            style="width: 250px"
+            alt="logo"
+          />
+          <!-- <h4 class="mt-1 mb-5 pb-1">ASWAK BERKANE</h4> -->
+        </div>
+        <div *ngIf="!registeredSuccess" class="alert alert-danger" role="alert">
+          يرجى التأكد من صحة جميع المعلومات  او ان هذا البريد الإلكتروني موجود بالفعل
+        </div>
+        <form
+          class="row"
+          #form
+          [formGroup]="dataRegistred"
+          (ngSubmit)="onSubmit(form)"
+        >
+          <div class="col-sm-12 col-md-6">
+            <!-- Prenom -->
+            <div class="form-group">
+              <label class="form-label" for="Prenom">Prenom</label>
+              <input
+                type="text"
+                id="Prenom"
+                [class.is-invalid]="FirstName.invalid && FirstName.touched"
+                [class.is-valid]="FirstName.valid"
+                formControlName="firstName"
+                class="form-control"
+                placeholder="Prenom"
+              />
+              <span
+                ><small
+                  class="text-danger ml"
+                  *ngIf="FirstName.invalid && FirstName.touched"
+                  >Le Prenom est obligatoire</small
+                ></span
+              >
+            </div>
+             <!-- Nom -->
+             <div class="form-group">
+              <label class="form-label" for="Nom">Nom</label>
+              <input
+                type="text"
+                id="Nom"
+                [class.is-invalid]="LastName.invalid && LastName.touched"
+                [class.is-valid]="LastName.valid"
+                formControlName="lastName"
+                class="form-control"
+                placeholder="Nom"
+              />
+              <span
+                ><small
+                  class="text-danger ml"
+                  *ngIf="LastName.invalid && LastName.touched"
+                  >Le Nom est obligatoire</small
+                ></span
+              >
+            </div>
+            <!-- Cin -->
+            <div class="form-group">
+              <label class="form-label" for="Cin">بطاقة الهوية الوطنية</label>
+              <input
+                type="text"
+                id="Cin"
+                [class.is-invalid]="
+                  IdentityCard.invalid && IdentityCard.touched
+                "
+                [class.is-valid]="IdentityCard.valid"
+                formControlName="identityCard"
+                class="form-control"
+                placeholder="بطاقة الهوية الوطنية"
+              />
+              <span
+                ><small
+                  class="text-danger ml"
+                  *ngIf="IdentityCard.invalid && IdentityCard.touched"
+                  >حقل بطاقة الهوية الوطنية إلزامي</small
+                ></span
+              >
+            </div>
+            <!-- Email -->
+            <div class="form-group">
+              <label class="form-label" for="Email">بريدك الالكتروني</label>
+              <input
+                type="email"
+                id="Email"
+                [class.is-invalid]="Email.invalid && Email.touched"
+                [class.is-valid]="Email.valid"
+                formControlName="email"
+                class="form-control"
+                placeholder="بريدك الالكتروني"
+              />
+              <span
+                ><small
+                  class="text-danger ml"
+                  *ngIf="Email.invalid && Email.touched"
+                  >حقل البريد الإلكتروني إلزامي</small
+                ></span
+              >
+            </div>
+            <!-- Password -->
+            <div class="form-group">
+              <label class="form-label" for="Password">كلمه السر</label>
+              <input
+                type="password"
+                [class.is-invalid]="Password.invalid && Password.touched"
+                [class.is-valid]="Password.valid"
+                formControlName="password"
+                id="Password"
+                class="form-control"
+                placeholder="كلمه السر"
+              />
+              <span
+                ><small
+                  class="text-danger ml"
+                  *ngIf="Password.invalid && Password.touched && Password.value.length <= 10"
+                  > حقل كلمة المرور إلزامي ويجب ان يكون طوله اكبر من  10 حروف</small
+                ></span
+              >
+            </div>
+            <!-- Confimr Password -->
+            <div class="form-group">
+              <label class="form-label" for="ConfirmPassword"
+                >تأكيد كلمة المرور</label
+              >
+              <input
+                type="password"
+                id="ConfirmPassword"
+                [class.is-invalid]="
+                  (ConfirmPassword.invalid || ConfirmPassword.valid) &&
+                  ConfirmPassword.touched &&
+                  ConfirmPassword.value != Password.value
+                "
+                [class.is-valid]="
+                  ConfirmPassword.valid &&
+                  ConfirmPassword.value == Password.value
+                "
+                formControlName="confirmPassword"
+                class="form-control"
+                placeholder="تأكيد كلمة المرور"
+              />
+              <span
+                ><small
+                  class="text-danger ml"
+                  *ngIf="ConfirmPassword.invalid && ConfirmPassword.touched"
+                  >حقل تأكيد كلمة المرور إلزامي</small
+                ></span
+              >
+              <span
+                ><small
+                  class="text-danger ml"
+                  *ngIf="
+                    ConfirmPassword.valid &&
+                    ConfirmPassword.touched &&
+                    ConfirmPassword.value != Password.value
+                  "
+                  >يرجى التأكد من صحة كلمة المرور الخاصة بك</small
+                ></span
+              >
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-6">
+            <!-- Prenom Ar -->
+            <div class="form-group">
+              <label class="form-label text--alignment-ar" for="PrenomAr"
+                >الاسم الشخصي</label
+              >
+              <input
+                type="text"
+                id="PrenomAr"
+                [class.is-invalid]="FirstNameAr.invalid && FirstNameAr.touched"
+                [class.is-valid]="FirstNameAr.valid"
+                formControlName="firstNameAr"
+                style="text-align: right"
+                class="form-control"
+                placeholder="الاسم الشخصي"
+              />
+              <span
+                ><small
+                  class="text-danger ml"
+                  *ngIf="FirstNameAr.invalid && FirstNameAr.touched"
+                  >حقل الاسم الشخصي إلزامي</small
+                ></span
+              >
+            </div>
+            <!-- Lastname Ar -->
+            <div class="form-group">
+              <label class="form-label text--alignment-ar" for=""
+                >الاسم العائلي</label
+              >
+              <input
+                type="text"
+                [class.is-invalid]="LastNameAr.invalid && LastNameAr.touched"
+                [class.is-valid]="LastNameAr.valid"
+                formControlName="lastNameAr"
+                id=""
+                style="text-align: right"
+                class="form-control"
+                placeholder="الاسم العائلي"
+              />
+              <span
+                ><small
+                  class="text-danger ml"
+                  *ngIf="LastNameAr.invalid && LastNameAr.touched"
+                  >حقل الاسم العائلي إلزامي</small
+                ></span
+              >
+            </div>
+            <!-- Addresse -->
+            <div class="form-group">
+              <label class="form-label" for="Adresse">عنوان</label>
+              <input
+                type="text"
+                name=""
+                id="Adresse"
+                [class.is-invalid]="Address.invalid && Address.touched"
+                [class.is-valid]="Address.valid"
+                formControlName="address"
+                class="form-control"
+                placeholder="عنوان"
+              />
+              <!-- <input type="email" id="" class="form-control" placeholder="Phone number or email address"/> -->
+              <span
+                ><small
+                  class="text-danger ml"
+                  *ngIf="Address.invalid && Address.touched"
+                  >حقل العنوان إلزامي</small
+                ></span
+              >
+            </div>
+            <!-- Datenaissance -->
+            <div class="form-group">
+              <label class="form-label" for="DateNaissance"
+                >تاريخ الولادة</label
+              >
+              <input
+                type="date"
+                id="DateNaissance"
+                [class.is-invalid]="
+                  DateNaissance.invalid && DateNaissance.touched
+                "
+                [class.is-valid]="DateNaissance.valid"
+                formControlName="dateNaissance"
+                class="form-control"
+              />
+              <span
+                ><small
+                  class="text-danger ml"
+                  *ngIf="DateNaissance.invalid && DateNaissance.touched"
+                  >حقل تاريخ الميلاد إلزامي</small
+                ></span
+              >
+            </div>
+            <!-- Phonenumber -->
+            <div class="form-group">
+              <label class="form-label" for="PhoneNumber">رقم الهاتف</label>
+              <input
+                type="text"
+                id="PhoneNumber"
+                [class.is-invalid]="PhoneNumber.invalid && PhoneNumber.touched"
+                [class.is-valid]="PhoneNumber.valid"
+                formControlName="phoneNumber"
+                class="form-control"
+                placeholder="رقم الهاتف"
+              />
+              <span
+                ><small
+                  class="text-danger ml"
+                  *ngIf="PhoneNumber.invalid && PhoneNumber.touched"
+                  >حقل الهاتف إلزامي</small
+                ></span
+              >
+            </div>
+            <!-- Activity -->
+            <div class="form-group">
+              <label class="form-label" for="ConfirmPassword"
+                >النشاط المزاول</label
+              >
+              <select id="activity" aria-placeholder="المرجو اختيار النشاط المزاول" formControlName="activityId" class="form-control">
+
+              <option value="" selected="true">المرجو اختيار النشاط المزاول</option>
+              <ng-template [ngIf]="activitiesViewModel">
+                <option  value="{{activity.id}}" *ngFor="let activity of activitiesViewModel.data;">{{activity.name}}</option>
+              </ng-template>
+
+            </select>
+              <!-- <input
+                type="text"
+                id="activity"
+                [class.is-invalid]="
+                  (Activity.invalid || Activity.valid) &&
+                  Activity.touched"
+                [class.is-valid]="
+                Activity.valid"
+                formControlName="activityId"
+                class="form-control"
+                placeholder="activity"
+              /> -->
+              <!-- <span
+                ><small
+                  class="text-danger ml"
+                  *ngIf="Activity.invalid && Activity.touched"
+                  >النشاط المزاول في المحل إلزامي</small
+                ></span
+              > -->
+            </div>
+          </div>
+          <div class="text-center m-4 mb-1">
+            <button
+              class="btn btn-outline-primary btn-block fa-lg mb-3"
+              style="width: 40%"
+              type="submit"
+            >
+            اشترك الان
+            </button>
+          </div>
+        </form>
+        <!-- <div class="d-flex align-items-center justify-content-center">
+
+          <button
+            type="button"
+            class="btn btn-outline-danger"
+            routerLink="/login"
+          >
+          تسجيل الدخول
+          </button>
+        </div> -->
+
+        <div class="text-center pb-1">
+          <p class="mb-0 me-2">هل لديك حساب؟</p>
+          <!-- <br> -->
+          <a
+            class="text-muted"
+            routerLink="/login"
+          >
+          تسجيل الدخول
+        </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

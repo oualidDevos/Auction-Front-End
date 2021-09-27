@@ -1,0 +1,55 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Poppins:wght@600&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@700&display=swap');
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cairo', sans-serif;
+}
+
+p, span, small, strong {
+  font-family: 'Cairo', sans-serif;
+}
+
+.carousel-caption {
+  position: absolute;
+  /* right: 15%; */
+  bottom: 1.25rem;
+  /* left: 3%; */
+  font-weight: bold;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  color: #fff;
+  /* text-align: center; */
+  margin-top: 2%;
+  bottom: -2%;
+  width: 100%;
+  background: #383838;
+  padding-right: 15px;
+  position: absolute;
+  right: 0%;
+  /* bottom: 1.25rem; */
+  left: 0%;
+  color: #fff;
+  text-align: left;
+}
+
+
+.h3--text {
+  /* font-family: 'Poppins', sans-serif; */
+  /* letter-spacing: 0.1rem; */
+  font-weight: bold;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+.p--text {
+  font-style: italic;
+  font-weight: 500;
+  text-align: right;
+  font-size: medium;
+  /* font-family: 'Montserrat', sans-serif; */
+}
+
+
+.orange--color {
+  color: #F4973C;
+}

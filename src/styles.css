@@ -1,0 +1,61 @@
+/* You can add global styles to this file, and also import other style files */
+.text--alignment-ar{
+  text-align: right;
+  display: inline-block;
+  width: 100%;
+}
+/* Default theme. ~960B */
+@import '~@vime/core/themes/default.css';
+
+/* Optional light theme (extends default). ~400B */
+@import '~@vime/core/themes/light.css';
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Poppins:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@700&display=swap');
+
+
+* {
+  font-family: 'Cairo', sans-serif !important;
+  font-weight: bold;
+}
+
+body {
+  background-color: #f8f8f8;;
+
+}
+
+/*  */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Cairo', sans-serif !important;
+  line-height: 1.6;
+  font-weight: bold !important;
+  /* text-align: right; */
+  /* width */
+}
+
+p, span, small, strong, select, label {
+  font-family: 'Cairo', sans-serif !important;
+  line-height: 1.6;
+  /* font-weight: bold !important; */
+
+  /* text-align: right; */
+}
+
+button, input[type="button"], input[type="submit"], input[type="number"], input[ type='text'], select, input {
+  font-weight: bold !important;
+}
+
+button:hover{
+  font-weight: bold !important;
+}
+/* */
+
+
+img {
+  cursor: pointer;
+}
+
+th, td > label{
+  text-align: center;
+}

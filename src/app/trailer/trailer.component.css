@@ -1,0 +1,124 @@
+/* video {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: 5100;
+  transform: translateX(-50%) translateY(-50%);
+  background-size: cover;
+  transition: 1s opacity;
+} */
+.stopfade {
+  opacity: 0.5;
+}
+
+#polina {
+  font-family: Agenda-Light, Agenda Light, Agenda, Arial Narrow,
+    sans-serif;
+  font-weight: 100;
+  background: rgba(0, 0, 0, 0.3);
+  color: white;
+  padding: 2rem;
+  width: 33%;
+  margin: 2rem;
+  float: right;
+  font-size: 1.2rem;
+}
+h1 {
+  font-size: 3rem;
+  text-transform: uppercase;
+  margin-top: 0;
+  letter-spacing: 0.3rem;
+}
+#polina button {
+  display: block;
+  width: 80%;
+  padding: 0.4rem;
+  border: none;
+  margin: 1rem auto;
+  font-size: 1.3rem;
+  background: rgba(255, 255, 255, 0.23);
+  color: #fff;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: 0.3s background;
+}
+#polina button:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+a {
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0.5rem;
+  transition: 0.6s background;
+}
+a:hover {
+  background: rgba(0, 0, 0, 0.9);
+}
+@media screen and (max-width: 500px) {
+  div {
+    width: 70%;
+  }
+  .login-wrapper {
+    cursor: pointer;
+  position: absolute;
+  opacity: 0.5;
+  font-size: xx-large;
+  color: white;
+  top: 70%;
+  right: 15% !important;
+  color: Red;
+
+  z-index: 55554455555;
+  animation: pulse;
+  font-size: xx-large;
+  animation-iteration-count: infinite;
+  animation-duration: 0.8s;
+  }
+}
+@media screen and (max-device-width: 800px) {
+  html {
+  }
+}
+
+.login-wrapper {
+  cursor: pointer;
+  position: absolute;
+  opacity: 0.5;
+  font-size: xx-large;
+  color: white;
+  top: 85%;
+  right: 45%;
+  z-index: 55554455555;
+  animation: pulse;
+  font-size: xx-large;
+  animation-iteration-count: infinite;
+  animation-duration: 0.8s;
+}
+
+
+.play-wrapper {
+  top: 45%;
+  cursor: pointer;
+  right: 50%;
+  color: white;
+  z-index: 55554455555;
+  position: absolute;
+  opacity: 0.5;
+  font-size: xx-large;
+}
+
+
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}

@@ -1,0 +1,101 @@
+<style>
+  img {
+    width: 100%;
+    height: 500px;
+    cursor: pointer;
+  }
+</style>
+
+<div class="row">
+
+  <ngb-carousel>
+    <ng-template [ngIf]="MainBidsViewModel">
+      <ng-template ngbSlide *ngFor="let item of MainBidsViewModel.data">
+        <div class="picsum-img-wrapper">
+          <img
+            *ngIf="item.mainImage != null"
+            [src]="
+              getAttachement(item.mainImage.contentType, item.mainImage.file)
+            "
+            (click)="detail(item.product.id + '')"
+            alt="Random first slide"
+          />
+
+          <img (click)="detail(item.product.id + '')" src="https://c.tenor.com/tEBoZu1ISJ8AAAAC/spinning-loading.gif" *ngIf="item.mainImage == null" />
+        </div>
+        <div class="carousel-caption">
+          <div class="row">
+            <div class="col-sm-5 col-lg-5" >
+              <h3 class="h3--text mb-2 p-0">
+                {{
+                  item.product.title != undefined
+                    ? item.product.title
+                    : item.product.price
+                }}
+                {{ item.product.title == undefined ? "(د.م)" : "" }}
+              </h3>
+              <!-- <p class="
+              p--text m-0 p-0">
+                {{
+                  item.product.title == undefined
+                    ? ""
+                    : (item.product.price | number: "4.0")
+                }}
+                <span class="orange--color">{{ item.product.title != undefined ? "(د.م)" : "" }}</span>
+              </p> -->
+              <p class="p--text m-0 p-0"> عدد المزايدات  :<span> {{ item.bidsNumber }} </span> </p>
+              <p class="p--text m-0 p-0"> المزاد الحالي  :<span> {{ item.currentBid | number : '4.0' }}  </span> <span class="orange--color">{{ item.product.title != undefined ? "(د.م)" : "" }}</span></p>
+              <p class="p--text m-0 p-0">  الحد الادنى  للمساهمة:<span> {{ item.product.price | number : '4.0' }}  </span> <span class="orange--color">{{ item.product.title != undefined ? "(د.م)" : "" }}</span></p>
+              <p class="p--text m-0 p-0"> الحد الادنى لواجب الكراء الشهري :<span> {{ item.currentRentBid | number : '4.0' }}  </span> <span class="orange--color">{{ item.product.title != undefined ? "(د.م)" : "" }}</span></p>
+              <!-- <p class="p--text m-0 p-0"> عدد المزايدات  :<span> {{ item. }} </span> </p> -->
+            </div>
+
+          </div>
+        </div>
+      </ng-template>
+    </ng-template>
+  </ngb-carousel>
+
+
+</div>
+
+<!-- <ngx-spinner></ngx-spinner> -->
+
+<div class="row">
+  <div class="col-sm-12 col-lg-12">
+    <div class="col-12 p-3 mt-3 mb-3" style=" background-color: white; border: 1px solid #435c73;border-radius: 5px;" >
+      <div class="row">
+       <div class="col-sm-12 col-md-4 col-lg-4 mb-2">
+        <label for="" style="margin-left: 1rem; align-self: center; width: fit-content;">الترتيب حسب:</label>
+        <select
+          name=""
+          #filter
+          id=""
+          class=""
+          style="margin-left: 1rem;width: 70%;  text-align: center"
+        >
+          <option value="DESC">من اعلى الى ادنى ثمن</option>
+          <option value="ASC">من ادنى الى اعلى ثمن</option>
+        </select>
+       </div>
+        <div class="col-sm-12 col-md-8 col-lg-8">
+          <button
+          class="btn btn-primary p-1 w-30"
+          (click)="ShowProducts(filter.value)"
+        >
+        بحث
+        </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12 col-lg-12">
+    <ng-template [ngIf]="ShowProductViewModel !== null">
+      <ng-template [ngIf]="ShowProductViewModel">
+        <app-bid-cards
+          [ShowProductViewModel]="ShowProductViewModel"
+        ></app-bid-cards>
+      </ng-template>
+    </ng-template>
+  </div>
+</div>

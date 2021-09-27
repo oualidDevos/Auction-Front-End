@@ -1,0 +1,44 @@
+<div style="width: 98%; margin: 0 auto;">
+  <div class="row" >
+    <div class="col-sm-12 col-lg-4 col-md-4 mb-3 mr-3 mb-1"  style="cursor: pointer;" routerLink="/bid/{{product.productId}}" *ngFor="let product of ShowProductViewModel?.data">
+        <div class="wrapper card" >
+          <img class="card-img-top" *ngIf="product.mainImage != null" [src]="getAttachement(product.mainImage.contentType, product.mainImage.file) " alt="Card image cap">
+          <img class="card-img-top" *ngIf="product.mainImage == null" src="https://c.tenor.com/tEBoZu1ISJ8AAAAC/spinning-loading.gif" />
+          <div class="card-body">
+              <h5 class="card-text"> {{ product.title }}</h5>
+            <small>
+              <p class="card-text">
+                <span class="font--weight">المزاد الحالي:</span><span> {{ product.currentBid | number:'4.0' }}  (د.م) </span>
+              </p>
+            </small>
+<!--
+            <small>
+              <p class="card-text" >
+                <span class="font--weight">العنوان:</span><span> {{ product.address }} </span>
+              </p>
+            </small> -->
+
+            <small>
+              <p class="card-text">
+                <span class="font--weight">ينتهي في:</span><span> {{ product.endDate == undefined ? "غير معروف" : product.endDate | date:'short': 'fr' }}</span>
+              </p>
+            </small>
+            <small>
+              <p class="card-text">
+                <span class="font--weight">النشاط التجاري المزاول في المحل:</span><span> {{ product.activity.name }}</span>
+              </p>
+            </small>
+            <small>
+              <p class="card-text">
+                <span class="font--weight">عدد المزايدات:</span><span> {{ product.bidsNumber }}</span>
+              </p>
+            </small>
+            <!-- <a class="btn btn-primary mt-2 mb-2" [routerLink]="['/test']">
+              Plus d'information
+            </a> -->
+            <!-- <button class="btn btn-primary"  >Plus d'information</button> -->
+          </div>
+        </div>
+       </div>
+  </div>
+</div>
