@@ -1,6 +1,6 @@
 import { AuthService } from './../Services/auth.service';
 import { AuctionService } from './../Services/auction.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Bids } from '../viewModels/Bids';
@@ -26,40 +26,47 @@ export class AuctionbidsComponent implements OnInit {
     }
   }
 
-
   searchDTO: SearchDTO = {};
   page: number = 0;
   pageCount: number = 0;
   list:Bids[] = [];
-  dataRegistred = this.fb.group({activityId : [-1]});
+  dataRegistred = this.fb.group({order : [-1]});
 
   isUserAdmin() {
     return this.authService.isUserAdmin();
   }
 
+  get Order() {
+    return this.dataRegistred.controls['order'];
+  }
+
 
   async nextPageHandler(): Promise<void> {
-    const searchDTO: SearchDTO = { pageSize: 10, page: this.page }
+    const searchDTO: SearchDTO = { pageSize: 10, page: this.page - 1 }
     await this.getListAuctionBids(searchDTO, this.auctionId);
   }
 
   async onSubmit(form: any): Promise<void> {
-    // if(this.ActivityId.value > -1){
-    //   await this.getListAuctions({ pageSize: 10, activityId: Number(this.ActivityId.value)});
-    // }
+
+    console.log(this.Order.value);
+
+    if(this.Order.value != "-1"){
+      await this.getListAuctionBids({ pageSize: 10, order: (this.Order.value)}, this.auctionId);
+    }
   }
 
   async getListAuctionBids(searchDTO: SearchDTO, auctionId: number): Promise<void>{
     await this.auctionService.getListAuctionBids(searchDTO, auctionId).toPromise()
       .then(
         m => {
-          console.log(m);
           this.pageCount = m.data[0].pageCount;
           this.list = m.data[0].list;
         }
       );
   }
 
-
+  formatDate(dateToFormat: string) {
+    return dateToFormat.substring(0, 16).replace("T", " ");
+  }
 
 }

@@ -60,7 +60,7 @@ export class AuctionsComponent implements OnInit {
   }
 
   async nextPageHandler(): Promise<void> {
-    const searchDTO: SearchDTO = { pageSize: 10, page: this.page }
+    const searchDTO: SearchDTO = { pageSize: 10, page: this.page - 1 }
     await this.getListAuctions(searchDTO);
   }
 

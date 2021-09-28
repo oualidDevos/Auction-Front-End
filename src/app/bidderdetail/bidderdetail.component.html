@@ -1,0 +1,91 @@
+<ng-template [ngIf]="bidder">
+  <div class="container mb-4">
+    <div class="header">
+      <div class="row">
+        <div class="col mb-3">
+          <div class="card">
+            <div class="card-body d-flex">
+              <h3
+                style="
+                  padding-left: 13px;
+                  align-self: center;
+                  margin: 0px;
+                  border-left: 1px solid rgb(161, 160, 160);
+                "
+              >
+                رقم الهاتف  0{{ bidder.phoneNumber }}
+              </h3>
+              <h3 style="align-self: center; margin: 0px; padding-right: 13px">
+                {{ bidder.identityCard }}
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="container"> -->
+      <div class="card">
+        <div class="card-body">
+
+          <div class="row">
+            <div class="col-lg-4 col-sm-4 col-sm-12">
+            <div class="col">
+              <label for="">
+                <span class="grey--color font--size"
+                  >الاسم الشخصي:</span
+                >
+                <span dir="ltr" class="font--size">{{
+                  bidder.firstName
+                }}</span>
+              </label>
+              <br />
+              <label for="">
+                <span class="grey--color font--size">الاسم العائلي:</span>
+                <span class="font--size">
+                  {{
+                    bidder.lastName
+                  }}
+                  </span
+                >
+              </label>
+              <br />
+              <label for="">
+                <span class="grey--color font--size">البطاقة الوطنبة:</span>
+                <span class="font--size">{{
+                  bidder.identityCard
+                }}</span>
+              </label>
+
+              <br />
+              <label for="">
+                <span class="grey--color font--size"
+                  >رقم الهاتف:</span
+                >
+                <span class="font--size">0{{
+                  bidder.phoneNumber
+                }}</span>
+              </label>
+              <br />
+              <label for="">
+                <span class="grey--color font--size">النشاط التجاري:</span>
+                <span class="font--size">
+                  {{
+                    bidder.activity.name
+                  }}</span>
+              </label>
+              <br />
+              <label for="">
+                <span class="grey--color font--size">عنوان:</span>
+                <span class="font--size">
+                  {{
+                    bidder.address
+                  }}</span>
+              </label>
+            </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  <!-- </div> -->
+<!-- </ng-template> -->

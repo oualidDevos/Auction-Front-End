@@ -66,13 +66,13 @@ export class InscriptionComponent implements OnInit {
          email: this.Email.value,
          bidder: {
            activityId: Number(this.Activity.value),
-           Address: this.Address.value,
-           BirthDate: this.DateNaissance.value,
-           FirstName: this.FirstName.value,
-           FirstNameAr: this.FirstNameAr.value,
-           LastName: this.LastName.value,
-           LastNameAr: this.LastNameAr.value,
-           IdentityCard: this.IdentityCard.value,
+           address: this.Address.value,
+           birthDate: this.DateNaissance.value,
+           firstName: this.FirstName.value,
+           firstNameAr: this.FirstNameAr.value,
+           lastName: this.LastName.value,
+           lastNameAr: this.LastNameAr.value,
+           identityCard: this.IdentityCard.value,
            phoneNumber: Number(this.PhoneNumber.value)
          }
        }

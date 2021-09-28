@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MyOwnBidsViewModel } from '../viewModels/myOwnBids';
+import { ReturnedBidderData } from '../viewModels/ReturnedBidderData';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,10 @@ export class BidderService {
 
   getOwnBids(bidderId: string) {
     return this.http.get<MyOwnBidsViewModel>(this.baseUrl + "bidders/GetOwnBidsWithouAttachments/" + bidderId, this.httpOptions);
+  }
+
+  getBidderDetail(bidderId: number){
+    return this.http.get<ReturnedBidderData>(this.baseUrl + "bidders/BidderDetailByBidId/" + bidderId, this.httpOptions);
   }
 
 }

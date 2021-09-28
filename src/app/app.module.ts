@@ -27,6 +27,7 @@ import { TrailerComponent } from './trailer/trailer.component';
 import { VimeModule } from '@vime/angular';
 import { AuctionsComponent } from './auctions/auctions.component';
 import { AuctionbidsComponent } from './auctionbids/auctionbids.component';
+import { BidderdetailComponent } from './bidderdetail/bidderdetail.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -49,6 +50,7 @@ export function tokenGetter(){
     TrailerComponent,
     AuctionsComponent,
     AuctionbidsComponent,
+    BidderdetailComponent,
   ],
   imports: [
     VimeModule,

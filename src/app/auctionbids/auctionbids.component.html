@@ -29,23 +29,18 @@
                 <label for="#" style="padding: 5px"> النشاط: </label>
               </div>
               <div class="col-sm-12 col-md-4 col-lg-4 m-2">
-                <!-- <select
-                  formControlName="activityId"
+                <select
+                  formControlName="order"
                   name=""
                   id=""
                   class="form-control"
                 >
-                  <option selected value="-1">المرجو اختيار النشاط</option>
-                  <option
-                    value="{{ activity.id }}"
-                    *ngFor="let activity of listActivites"
-                  >
-                    {{ activity.name }}
-                  </option>
-                </select> -->
+                <option value="DESC">من اعلى الى ادنى ثمن</option>
+                <option value="ASC">من ادنى الى اعلى ثمن</option>
+                </select>
               </div>
-              <div class="col-sm-12 col-md-4 col-lg-4 m-2">
-                <button type="submit" class="btn btn-primary form-control">
+              <div class="col-sm-12 col-md-1 col-lg-1 m-2">
+                <button type="submit" class="btn btn-primary form-control" style="text-align: center;">
                   بحث
                 </button>
               </div>
@@ -58,58 +53,43 @@
         <table class="table">
           <thead class="thead-primary">
             <tr>
-              <!-- <th>&nbsp;</th> -->
               <th>&nbsp;</th>
-              <th>المحل</th>
-              <th>المساحة</th>
-              <th>النشاط</th>
-              <th>تاريخ بدء المزاد</th>
-              <th>مزيد من المعلومات</th>
-              <th>لائحة المزايدات</th>
+              <th>المساهمة</th>
+              <th>واجب الكراء</th>
+              <th>تاريخ المساهمة</th>
+              <th>البطاقة الوطنبة</th>
             </tr>
           </thead>
           <tbody>
-            <!-- <tr
+            <tr
               *ngFor="let product of list"
               style="border-bottom: 2px solid #f8f9fd"
             >
               <td></td>
               <td class="border-bottom-0">
                 <div class="">
-                  <span style="font-size: large">{{ product.bidder }}</span>
-                  <br />
-                  <span>{{ product.product.number }}</span>
+                  <span style="font-size: large">{{ product.amount | number: "4.0" }}</span>
                 </div>
               </td>
               <td class="border-bottom-0">
                 <span style="font-size: large"
-                  >{{ product.product.surface }} متر مربع</span
+                  >{{ product.rentAmount | number: "4.0" }} </span
                 >
               </td>
               <td class="border-bottom-0">
                 <span style="font-size: large">{{
-                  product.product.activity.name
+                  formatDate(product.bidDate)
                 }}</span>
               </td>
-              <td class="border-bottom-0">
-                <span style="font-size: large">{{
-                  formatDate(product.startDate)
-                }}</span>
+              <td class="border-bottom-0" routerLink="/bidder/{{product.bidderId}}">
+                <a href="#" routerLink="/bidder/{{product.bidderId}}"><span style="font-size: large; cursor: pointer;">{{
+                  product.bidder.identityCard
+                }}</span></a>
               </td>
-              <td
-                class="border-bottom-0"
-                (click)="detailProduct(product.productId)"
-              >
-                <span style="font-size: large; cursor: pointer"
-                  ><i class="fas fa-copy"></i
-                ></span>
-              </td>
-              <td class="border-bottom-0" routerLink="/bids/{{ product.id }}">
-                <span style="font-size: large"
-                  ><i class="fas fa-copy"></i
-                ></span>
-              </td>
-            </tr> -->
+            </tr>
+            <tr *ngIf="list.length == 0">
+              <td [colSpan]="6" style="text-align: center;">لا بوجد معلومات</td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -122,4 +102,7 @@
     (click)="nextPageHandler()"
   ></ngb-pagination>
   <!-- </div> -->
+  <button class="btn btn-success" routerLink="/auctions">
+    جميع المزادات
+  </button>
 </section>
