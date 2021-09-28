@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ReturnedAuctionBids } from '../viewModels/ReturnedAuctionBids';
 import { ReturnedDataSearchDTO } from '../viewModels/ReturnedDataSearchDTO';
 import { SearchDTO } from '../viewModels/SearchDTO';
 
@@ -19,5 +20,9 @@ export class AuctionService {
 
   getListAuctions(searchDTO: SearchDTO): Observable<any> {
     return this.http.post<ReturnedDataSearchDTO>(this.baseUrl + "auctions/FilteredAuctions", searchDTO, this.httpOptions)
+  }
+
+  getListAuctionBids(searchDTO: SearchDTO, auctionId: number): Observable<any> {
+    return this.http.post<ReturnedAuctionBids>(this.baseUrl + "Bids/FilteredBids/" + auctionId, searchDTO, this.httpOptions)
   }
 }

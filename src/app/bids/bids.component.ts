@@ -24,7 +24,8 @@ export class BidsComponent implements OnInit {
   async ngOnInit(): Promise<void> {
 
     if( this.authService.isUserAdmin() === true ){
-      this.router.navigate(['auctions']);
+      this.router.navigate(['/auctions']);
+      return;
     }
 
     await this.ShowProducts();
@@ -36,7 +37,9 @@ export class BidsComponent implements OnInit {
       .then(
         m => {
           // console.log(m);
-          element.mainImage = m.data[0];
+          if( m.data[0] != undefined){
+            element.mainImage = m.data[0];
+          }
         }
       )
       }

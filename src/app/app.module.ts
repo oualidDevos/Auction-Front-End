@@ -26,6 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TrailerComponent } from './trailer/trailer.component';
 import { VimeModule } from '@vime/angular';
 import { AuctionsComponent } from './auctions/auctions.component';
+import { AuctionbidsComponent } from './auctionbids/auctionbids.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -47,6 +48,7 @@ export function tokenGetter(){
     MyBidsComponent,
     TrailerComponent,
     AuctionsComponent,
+    AuctionbidsComponent,
   ],
   imports: [
     VimeModule,

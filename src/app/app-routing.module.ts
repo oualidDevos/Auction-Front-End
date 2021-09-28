@@ -1,3 +1,4 @@
+import { AuctionbidsComponent } from './auctionbids/auctionbids.component';
 import { AuctionsComponent } from './auctions/auctions.component';
 import { TestComponent } from './test/test.component';
 import { DetailComponent } from './detail/detail.component';
@@ -23,8 +24,8 @@ const routes: Routes = [
   { path: 'cards', component: BidCardsComponent, canActivate: [AuthGuardService] },
   { path: 'bid/:id', component: DetailComponent, canActivate: [AuthGuardService] },
   { path: 'mybids', component: MyBidsComponent, canActivate: [AuthGuardService] },
-  { path: 'test', component: TestComponent },
   { path: 'auctions', component: AuctionsComponent, canActivate: [AuthGuardService]},
+  { path: 'bids/:id', component: AuctionbidsComponent, canActivate: [AuthGuardService]},
   { path: '', redirectTo: '/main', pathMatch: 'full'},
   { path: '**', component: NotfoundComponent }
 ];

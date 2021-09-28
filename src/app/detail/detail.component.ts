@@ -51,7 +51,7 @@ export class DetailComponent implements OnInit {
     await this.productDetails(this.productId);
     // console.log(this.ProductDetailsViewModel?.data.attachments);
     if( this.ProductDetailsViewModel?.error != null ){
-      this.router.navigate(["/main/bids"]);
+      this.router.navigate(["/main"]);
     }else{
 
       if( this.ProductDetailsViewModel ){
@@ -91,7 +91,7 @@ export class DetailComponent implements OnInit {
     .then(
       m => {
         this.ProductDetailsViewModel = m;
-        console.log(this.ProductDetailsViewModel)
+        // console.log(this.ProductDetailsViewModel)
       },
       err => {
         this.error = true;
@@ -105,7 +105,12 @@ export class DetailComponent implements OnInit {
     .then(
       m=> {
         this.attachements = m.data;
-        this.currenuImageDisplayed = this.getAttachement(this.attachements[0].contentType, this.attachements[0].file)
+
+        if( this.attachements ){
+          if( this.attachements.length > 0 ){
+            this.currenuImageDisplayed = this.getAttachement(this.attachements[0].contentType, this.attachements[0].file)
+          }
+        }
       }
     )
   }

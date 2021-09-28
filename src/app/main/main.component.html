@@ -1,55 +1,85 @@
-<div [class.align-items-stretch]='isUserAuthenticated() === true' [class.d-flex]='isUserAuthenticated() === true' [class.wrapper]='isUserAuthenticated() === true'>
-
-
-  <nav id="sidebar" *ngIf="isUserAuthenticated() === true" style="z-index: 50000;background: #2F4050;" [class.active]="toggled">
-
+<div
+  [class.align-items-stretch]="isUserAuthenticated() === true"
+  [class.d-flex]="isUserAuthenticated() === true"
+  [class.wrapper]="isUserAuthenticated() === true"
+>
+  <nav
+    id="sidebar"
+    *ngIf="isUserAuthenticated() === true"
+    style="z-index: 50000; background: #2f4050"
+    [class.active]="toggled"
+  >
     <div class="p-4 pt-5">
-
-      <h2 style="color: white"><a href="#" class="logo" style="text-transform: uppercase;">المزاد العلني</a></h2>
+      <h2 style="color: white">
+        <a href="#" class="logo" style="text-transform: uppercase"
+          >المزاد العلني</a
+        >
+      </h2>
 
       <ul class="list-unstyled components mb-5">
         <ng-template [ngIf]="isUserAdmin() === false">
           <li>
-              <a routerLink="/" style="text-align: right;"><i class="fas fa-store"></i> محلات للكراء </a>
+            <a routerLink="/" style="text-align: right"
+              ><i class="fas fa-store"></i> محلات للكراء
+            </a>
           </li>
         </ng-template>
-        <ng-template [ngIf]="isUserAccountActivated() == true && isUserAdmin() === false">
+        <ng-template
+          [ngIf]="isUserAccountActivated() == true && isUserAdmin() === false"
+        >
           <li>
-            <a routerLink="/mybids" style="text-align: right;"><i class="fas fa-store"></i> مزايداتي </a>
+            <a routerLink="/mybids" style="text-align: right"
+              ><i class="fas fa-store"></i> مزايداتي
+            </a>
           </li>
         </ng-template>
         <ng-template [ngIf]="isUserAdmin() === true">
           <li>
-              <a routerLink="/auctions" style="text-align: right;"><i class="fas fa-copy"></i>  جميع المزايدات </a>
+            <a routerLink="/auctions" style="text-align: right"
+              ><i class="fas fa-copy"></i> جميع المزايدات
+            </a>
           </li>
         </ng-template>
       </ul>
     </div>
     <div class="custom-menu">
-      <button type="button" id="sidebarCollapse" (click)="toggleMenu()" class="btn btn-primary">
+      <button
+        type="button"
+        id="sidebarCollapse"
+        (click)="toggleMenu()"
+        class="btn btn-primary"
+      >
         <i class="fa fa-bars"></i>
         <span class="sr-only">Toggle Menu</span>
       </button>
     </div>
   </nav>
-      <!-- Page Content  -->
+  <!-- Page Content  -->
 
-      <div id="content" [class.color--white]="currentUrl === true">
-        <nav class="navbar" *ngIf="isUserAuthenticated() === true">
-          <div class="container-fluid">
-            <a class="navbar-brand"></a>
-            <form class="d-flex flex-row" >
-              <!-- <button class="btn" style="color: grey;"><i class="far fa-bell"></i></button> -->
-              <button class="btn" (click)="logOut()" style="color: grey;" type="submit"><i class="fas fa-sign-out-alt"></i> تسجيل الخروج</button>
-            </form>
-          </div>
-        </nav>
-        <div [class.display]="isUserAuthenticated() === true" class="router-wrapper" [@scaleDownFromTop]="getState(o)">
-          <!-- <app-trailer [outlet]="o"></app-trailer> -->
-              <router-outlet  #o="outlet" > </router-outlet>
-        </div>
+  <div id="content" [class.color--white]="currentUrl === true">
+    <nav class="navbar" *ngIf="isUserAuthenticated() === true">
+      <div class="container-fluid">
+        <a class="navbar-brand"></a>
+        <form class="d-flex flex-row">
+          <!-- <button class="btn" style="color: grey;"><i class="far fa-bell"></i></button> -->
+          <button
+            class="btn"
+            (click)="logOut()"
+            style="color: grey"
+            type="submit"
+          >
+            <i class="fas fa-sign-out-alt"></i> تسجيل الخروج
+          </button>
+        </form>
       </div>
+    </nav>
+    <div
+      [class.display]="isUserAuthenticated() === true"
+      class="router-wrapper"
+      [@scaleDownFromTop]="getState(o)"
+    >
+      <!-- <app-trailer [outlet]="o"></app-trailer> -->
+      <router-outlet #o="outlet"> </router-outlet>
+    </div>
+  </div>
 </div>
-
-
-
