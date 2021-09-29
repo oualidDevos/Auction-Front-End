@@ -15,7 +15,7 @@ export class AdminGuardService implements CanActivate{
       return true;
     }
     else{
-      this.router.navigate(["/trailer"])
+      this.router.navigate(["/"])
       return false;
     }
   }

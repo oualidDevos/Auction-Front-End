@@ -13,7 +13,8 @@
                   border-left: 1px solid rgb(161, 160, 160);
                 "
               >
-                رقم الهاتف  0{{ bidder.phoneNumber }}
+                {{ bidder.firstName }}
+                {{ bidder.lastName }}
               </h3>
               <h3 style="align-self: center; margin: 0px; padding-right: 13px">
                 {{ bidder.identityCard }}
@@ -83,22 +84,43 @@
             </div>
             </div>
 
-            <!-- <div class="col-lg-12 col-md-12 col-sm-12 mt-2">
+            <div class="col-lg-12 col-md-12 col-sm-12 mt-2">
               <div class="table-wrap">
                 <table class="table table-bordered">
                   <thead class="thead-primary">
                     <tr>
+                      <th>المحل</th>
                       <th>المساهمة</th>
                       <th>واجب الكراء</th>
                       <th>تاريخ المساهمة</th>
                     </tr>
                   </thead>
                   <tbody>
-
+                    <tr *ngFor="let bid of list">
+                      <td class="large--text">
+                        {{ bid.auction.product.title }}
+                        <br>
+                        <small><span>{{ bid.auction.product.number }}</span></small>
+                      </td>
+                      <td ><span class="large--text">{{ bid.amount | number:'4.0' }}</span></td>
+                      <td class="large--text"><span class="large--text">{{ bid.rentAmount | number:'4.0' }}</span></td>
+                      <td class="large--text"><span class="large--text">{{ bid.bidDate | date: 'shortDate' }}</span></td>
+                    </tr>
+                    <tr *ngIf="list.length === 0">
+                      <td [colSpan]="4">لا يوجد معلومات</td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
-            </div> -->
+            </div>
+
+            <ngb-pagination
+            [collectionSize]="pageCount"
+            [(page)]="page"
+            aria-label="Default pagination"
+            (click)="nextPageHandler($event)"
+            [directionLinks]="false"
+          ></ngb-pagination>
             </div>
           </div>
         </div>

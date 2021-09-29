@@ -36,9 +36,11 @@ export class BidsComponent implements OnInit {
       this.productService.getProductOwnAtt(element.product.id).toPromise()
       .then(
         m => {
-          // console.log(m);
-          if( m.data[0] != undefined){
-            element.mainImage = m.data[0];
+          console.log("here error");
+
+          console.log(m.data);
+          if( m.data != undefined){
+              element.mainImage = m.data[0];
           }
         }
       )
@@ -52,7 +54,8 @@ export class BidsComponent implements OnInit {
       this.productService.getProductOwnAtt(element.productId).subscribe(
         m => {
           // element.mainImage = .data.;
-          if( m.data[0] != undefined){
+
+          if( m.data != undefined){
             element.mainImage = m.data[0];
           }
         }
@@ -99,12 +102,13 @@ export class BidsComponent implements OnInit {
     );
 
     this.ShowProductViewModel?.data.forEach(element => {
-      console.log(element.productId);
 
       this.productService.getProductOwnAtt(element.productId).subscribe(
         m => {
           // element.mainImage = .data.;
-          element.mainImage = m.data[0];
+          if( m.data != undefined ){
+            element.mainImage = m.data[0];
+          }
         }
       )
       }

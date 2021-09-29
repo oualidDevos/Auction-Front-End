@@ -64,7 +64,7 @@ export class AuctionsComponent implements OnInit {
     let pageNumber = 0;
     pageNumber = parseInt(targets[1]);
     this.page = Number(pageNumber);
-    const searchDTO: SearchDTO = { pageSize: 10, page: this.page - 1 }
+    const searchDTO: SearchDTO = { pageSize: 10, page: this.page - 1  }
     await this.getListAuctions(searchDTO);
   }
 

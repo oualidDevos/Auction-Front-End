@@ -18,13 +18,13 @@
                     يرجى التحقق أنه تم تنشيط حسابك أو من كلمة المرور الخاصة بحسابك
                   </div>
                   <div class="form-outline mb-4">
-                    <label class="form-label" for="email">بريدك الالكتروني</label>
-                    <input dir="ltr" type="email" id="email" class="form-control" #email placeholder="بريدك الالكتروني"/>
+                    <label class="form-label" for="email">البريد الإلكتروني أو بطاقة الهوية الوطنية</label>
+                    <input dir="ltr" type="email" (keyup.enter)="keyup($event, email.value, password.value)" id="email" class="form-control" #email placeholder="بريدك الالكتروني"/>
                   </div>
 
                   <div class="form-outline mb-4">
                     <label class="form-label"  for="password">كلمة السر</label>
-                    <input dir="ltr" type="password" id="password" #password placeholder="كلمة السر" class="form-control" />
+                    <input dir="ltr" type="password" id="password" (keyup.enter)="keyup($event, email.value, password.value)" #password placeholder="كلمة السر" class="form-control" />
                   </div>
 
                   <div class="text-center pt-1 mb-5 pb-1">

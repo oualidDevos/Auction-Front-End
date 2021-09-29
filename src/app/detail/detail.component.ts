@@ -108,6 +108,7 @@ export class DetailComponent implements OnInit {
 
         if( this.attachements ){
           if( this.attachements.length > 0 ){
+            console.log(m);
             this.currenuImageDisplayed = this.getAttachement(this.attachements[0].contentType, this.attachements[0].file)
           }
         }

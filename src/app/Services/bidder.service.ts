@@ -36,4 +36,8 @@ export class BidderService {
     return this.http.get<ReturnedBidderData>(this.baseUrl + "bidders/BidderDetailByBidId/" + bidderId, this.httpOptions);
   }
 
+  getBidderBids(bidderId: number){
+    return this.http.get<ReturnedBidderData>(this.baseUrl + "bidders/BidderDetailByBidId/" + bidderId, this.httpOptions);
+  }
+
 }

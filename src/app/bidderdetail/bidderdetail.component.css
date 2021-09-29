@@ -115,7 +115,21 @@ img {
 
 
   tbody, td, tfoot, th, thead, tr {
-    border: 1px solid grey;
+    border: 1px solid black !important;
   }
 
+  .large--text {
+    font-size: large !important;
+    align-self: center;
+  }
+
+  .table tbody th,
+  .table tbody td {
+    border: none;
+    padding: 10px;
+    font-size: 14px;
+    background: #fff;
+    border-bottom: 4px solid #f8f9fd;
+    vertical-align: middle;
+  }
 

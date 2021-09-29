@@ -17,7 +17,7 @@ import { AdminGuardService } from './guards/admin-guard.service';
 import { BidderdetailComponent } from './bidderdetail/bidderdetail.component';
 
 const routes: Routes = [
-  { path: 'trailer', component: TrailerComponent, data: {state: 'trailer'} },
+  { path: '', component: TrailerComponent, data: {state: 'trailer'} },
   { path: 'login', component: LoginComponent, data: {state: 'login'} },
   { path: 'inscription', component: InscriptionComponent, data: {state: 'register'} },
   // { path: 'main', component: MainComponent, canActivate: [AuthGuardService] },
@@ -28,7 +28,7 @@ const routes: Routes = [
   { path: 'auctions', component: AuctionsComponent, canActivate: [AuthGuardService, AdminGuardService]},
   { path: 'bidder/:id', component: BidderdetailComponent, canActivate: [AuthGuardService, AdminGuardService]},
   { path: 'bids/:id', component: AuctionbidsComponent, canActivate: [AuthGuardService]},
-  { path: '', redirectTo: '/main', pathMatch: 'full'},
+  // { path: '', redirectTo: '/main', pathMatch: 'full'},
   { path: '**', component: NotfoundComponent }
 ];
 

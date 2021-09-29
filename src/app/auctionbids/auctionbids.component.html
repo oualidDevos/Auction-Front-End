@@ -35,7 +35,7 @@
                   id=""
                   class="form-control"
                 >
-                <option value="DESC">من اعلى الى ادنى ثمن</option>
+                <option selected value="DESC">من اعلى الى ادنى ثمن</option>
                 <option value="ASC">من ادنى الى اعلى ثمن</option>
                 </select>
               </div>
@@ -108,6 +108,7 @@
     [(page)]="page"
     aria-label="Default pagination"
     (click)="nextPageHandler($event)"
+    [directionLinks]="false"
   ></ngb-pagination>
   <!-- </div> -->
   <button class="btn btn-success" routerLink="/auctions">

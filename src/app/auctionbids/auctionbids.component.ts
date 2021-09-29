@@ -20,7 +20,7 @@ export class AuctionbidsComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     if( this.isUserAdmin() ){
       this.auctionId = Number(this.route.snapshot.paramMap.get('id'));
-      await this.getListAuctionBids({}, this.auctionId);
+      await this.getListAuctionBids({auctionId: this.auctionId});
     }else {
       this.router.navigate(['/']);
     }
@@ -46,18 +46,18 @@ export class AuctionbidsComponent implements OnInit {
     let pageNumber = 0;
     pageNumber = parseInt(targets[1]);
     this.page = Number(pageNumber);
-    const searchDTO: SearchDTO = { pageSize: 10, page: this.page - 1 }
-    await this.getListAuctionBids(searchDTO, this.auctionId);
+    const searchDTO: SearchDTO = { pageSize: 10, page: this.page - 1,auctionId: this.auctionId }
+    await this.getListAuctionBids(searchDTO);
   }
 
   async onSubmit(form: any): Promise<void> {
     if(this.Order.value != "-1"){
-      await this.getListAuctionBids({ pageSize: 10, order: (this.Order.value)}, this.auctionId);
+      await this.getListAuctionBids({ pageSize: 10, order: (this.Order.value), auctionId: this.auctionId});
     }
   }
 
-  async getListAuctionBids(searchDTO: SearchDTO, auctionId: number): Promise<void>{
-    await this.auctionService.getListAuctionBids(searchDTO, auctionId).toPromise()
+  async getListAuctionBids(searchDTO: SearchDTO): Promise<void>{
+    await this.auctionService.getListAuctionBids(searchDTO).toPromise()
       .then(
         m => {
           this.pageCount = m.data[0].pageCount;
