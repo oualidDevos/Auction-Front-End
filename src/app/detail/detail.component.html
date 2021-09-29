@@ -154,7 +154,7 @@
                   ProductDetailsViewModel.data[0].endDate == null
                     ? "غير محدد"
                     : (ProductDetailsViewModel.data[0].endDate
-                      | date: "short":"fr")
+                      | date: "shortDate")
                 }}</span>
               </label>
 
@@ -384,6 +384,12 @@
     <ng-template [ngIf]="isUserAdmin() === false">
       <button class="btn btn-success mt-2 mb-2" routerLink="/">
         قائمة المزادات
+      </button>
+    </ng-template>
+
+    <ng-template [ngIf]="isUserAdmin() === true">
+      <button class="btn btn-success  mt-2 mb-2" routerLink="/auctions">
+        جميع المزادات
       </button>
     </ng-template>
   </div>

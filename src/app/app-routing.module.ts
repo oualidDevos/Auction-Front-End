@@ -25,8 +25,8 @@ const routes: Routes = [
   { path: 'cards', component: BidCardsComponent, canActivate: [AuthGuardService] },
   { path: 'bid/:id', component: DetailComponent, canActivate: [AuthGuardService] },
   { path: 'mybids', component: MyBidsComponent, canActivate: [AuthGuardService] },
-  { path: 'auctions', component: AuctionsComponent, canActivate: [AuthGuardService]},
-  { path: 'bidder/:id', component: BidderdetailComponent, canActivate: [AuthGuardService]},
+  { path: 'auctions', component: AuctionsComponent, canActivate: [AuthGuardService, AdminGuardService]},
+  { path: 'bidder/:id', component: BidderdetailComponent, canActivate: [AuthGuardService, AdminGuardService]},
   { path: 'bids/:id', component: AuctionbidsComponent, canActivate: [AuthGuardService]},
   { path: '', redirectTo: '/main', pathMatch: 'full'},
   { path: '**', component: NotfoundComponent }

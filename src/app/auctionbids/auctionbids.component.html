@@ -50,14 +50,15 @@
       </div>
       <!-- </div> -->
       <div class="table-wrap">
-        <table class="table">
+        <table class="table table-bordered">
           <thead class="thead-primary">
             <tr>
-              <th>&nbsp;</th>
               <th>المساهمة</th>
               <th>واجب الكراء</th>
               <th>تاريخ المساهمة</th>
               <th>البطاقة الوطنبة</th>
+              <th>الاسم الكامل</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -65,7 +66,6 @@
               *ngFor="let product of list"
               style="border-bottom: 2px solid #f8f9fd"
             >
-              <td></td>
               <td class="border-bottom-0">
                 <div class="">
                   <span style="font-size: large">{{ product.amount | number: "4.0" }}</span>
@@ -78,17 +78,25 @@
               </td>
               <td class="border-bottom-0">
                 <span style="font-size: large">{{
-                  formatDate(product.bidDate)
+                  product.bidDate| date:'shortDate'
                 }}</span>
               </td>
               <td class="border-bottom-0" routerLink="/bidder/{{product.bidderId}}">
-                <a href="#" routerLink="/bidder/{{product.bidderId}}"><span style="font-size: large; cursor: pointer;">{{
+                <span style="font-size: large; cursor: pointer;">{{
                   product.bidder.identityCard
-                }}</span></a>
+                }}</span>
+              </td>
+              <td>
+                <span>
+                  {{ product.bidder.firstName }}  {{ product.bidder.lastName }}
+                </span>
+              </td>
+              <td>
+                <button class="btn btn-primary" routerLink="/bidder/{{product.bidderId}}">مزيد من المعلومات</button>
               </td>
             </tr>
             <tr *ngIf="list.length == 0">
-              <td [colSpan]="6" style="text-align: center;">لا بوجد معلومات</td>
+              <td [colSpan]="7" style="text-align: center;">لا بوجد معلومات</td>
             </tr>
           </tbody>
         </table>
@@ -99,7 +107,7 @@
     [collectionSize]="pageCount"
     [(page)]="page"
     aria-label="Default pagination"
-    (click)="nextPageHandler()"
+    (click)="nextPageHandler($event)"
   ></ngb-pagination>
   <!-- </div> -->
   <button class="btn btn-success" routerLink="/auctions">

@@ -160,7 +160,7 @@ h5,
 }
 .table thead th {
   border: none;
-  padding: 30px;
+  padding: 15px;
   /* font-size: 13px; */
   font-weight: 500;
   color: white;
@@ -171,7 +171,7 @@ h5,
 .table tbody th,
 .table tbody td {
   border: none;
-  padding: 30px;
+  padding: 10px;
   font-size: 14px;
   background: #fff;
   border-bottom: 4px solid #f8f9fd;
@@ -274,4 +274,9 @@ th {
 
 td {
   text-align: center;
+  border-bottom: 1px solid;
+}
+
+tbody, td, tfoot, th, thead, tr {
+  border: 1px solid grey !important;
 }

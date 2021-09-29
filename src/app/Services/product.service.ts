@@ -20,13 +20,13 @@ export class ProductService {
   };
 
 
-  getMainProducts(bidderId: string): Observable<any>{
-    return this.http.get<MainBidsViewModel>(this.baseUrl + "products/GetMainProducts/" + bidderId, this.httpOptions);
-  }
+  // getMainProducts(bidderId: string): Observable<any>{
+  //   return this.http.get<MainBidsViewModel>(this.baseUrl + "products/GetMainProducts/" + bidderId, this.httpOptions);
+  // }
 
-  showProducts(filter: string = "ASC"): Observable<any> {
-    return this.http.get<ShowProductViewModel>(this.baseUrl + "products/ShowProducts/" + sessionStorage.getItem('bidderId') +"/"+ filter, this.httpOptions)
-  }
+  // showProducts(filter: string = "ASC"): Observable<any> {
+  //   return this.http.get<ShowProductViewModel>(this.baseUrl + "products/ShowProducts/" + sessionStorage.getItem('bidderId') +"/"+ filter, this.httpOptions)
+  // }
 
   productDetails(productId: number): Observable<any> {
     return this.http.get<ShowProductViewModel>(this.baseUrl + "products/details/" + productId, this.httpOptions)
@@ -41,11 +41,11 @@ export class ProductService {
     return this.http.get<GetImageViewModel>(this.baseUrl + "attachments/GetMainAttachmentByProductId/" + productId, this.httpOptions)
   }
 
-  showProducts2(filter: string = "ASC"): Observable<any> {
+  showProducts(filter: string = "ASC"): Observable<any> {
     return this.http.get<ShowProductViewModel>(this.baseUrl + "products/ShowProductsWithoutAttachments/" + sessionStorage.getItem('bidderId') +"/"+ filter, this.httpOptions)
   }
 
-  getMainProducts2(bidderId: string): Observable<any>{
+  getMainProducts(bidderId: string): Observable<any>{
     return this.http.get<MainBidsViewModel>(this.baseUrl + "products/GetMainProductsWithoutAttachments/" + bidderId, this.httpOptions);
   }
 

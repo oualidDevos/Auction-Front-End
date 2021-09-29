@@ -2,6 +2,7 @@ import { Bidder } from './../viewModels/Bidder';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { BidderService } from '../Services/bidder.service';
+import { MyOwnBidsViewModel } from '../viewModels/myOwnBids';
 
 @Component({
   selector: 'app-bidderdetail',
@@ -14,19 +15,28 @@ export class BidderdetailComponent implements OnInit {
 
   bidderId: number = 0;
   bidder?: Bidder;
+  myOwnBidsViewModel?: MyOwnBidsViewModel;
 
-  ngOnInit(): void {
+
+  async ngOnInit(): Promise<void> {
     this.bidderId = Number(this.route.snapshot.paramMap.get('id'));
 
     this.bidderService.getBidderDetail(this.bidderId).toPromise()
     .then(
       m=> {
-        console.log(m);
         this.bidder = m.data[0];
       }
     )
 
-    console.log(this.bidder);
+    await this.bidderService.getOwnBids(this.bidderId.toString()).toPromise()
+      .then(
+        m=> {
+          this.myOwnBidsViewModel = m;
+          console.log(this.myOwnBidsViewModel);
+
+        }
+      );
   }
+
 
 }

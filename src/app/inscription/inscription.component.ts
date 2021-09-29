@@ -52,7 +52,7 @@ export class InscriptionComponent implements OnInit {
     phoneNumber : [null,Validators.compose([Validators.required, Validators.pattern("^[0-9]{10}")])],
     activityId : [null,Validators.compose([Validators.required])],
     address : [null,Validators.required],
-    identityCard: [null, Validators.required],
+    identityCard: [null, Validators.compose([Validators.required, Validators.pattern('[A-Z]{1,3}[0-9]{4,6}$')])],
     password: [null, Validators.compose([Validators.required, Validators.minLength(10)])],
     confirmPassword: [null, Validators.required],
     dateNaissance: [null, Validators.required],

@@ -52,7 +52,9 @@ export class BidsComponent implements OnInit {
       this.productService.getProductOwnAtt(element.productId).subscribe(
         m => {
           // element.mainImage = .data.;
-          element.mainImage = m.data[0];
+          if( m.data[0] != undefined){
+            element.mainImage = m.data[0];
+          }
         }
       )
       }
@@ -67,7 +69,7 @@ export class BidsComponent implements OnInit {
   async MainProducts(): Promise<void> {
     let bidderId = sessionStorage.getItem('bidderId');
       if( bidderId ){
-        await this.productService.getMainProducts2(bidderId).toPromise()
+        await this.productService.getMainProducts(bidderId).toPromise()
       . then(
           m=> {
             this.MainBidsViewModel = m;
@@ -89,7 +91,7 @@ export class BidsComponent implements OnInit {
 
   ShowProductViewModel?: ShowProductViewModel;
   async ShowProducts(filter: string = "ASC"): Promise<void> {
-    await this.productService.showProducts2(filter).toPromise()
+    await this.productService.showProducts(filter).toPromise()
     .then(
       m=> {
         this.ShowProductViewModel = m;

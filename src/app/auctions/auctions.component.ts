@@ -59,7 +59,11 @@ export class AuctionsComponent implements OnInit {
       );
   }
 
-  async nextPageHandler(): Promise<void> {
+  async nextPageHandler($event: any): Promise<void> {
+    let targets: any[] = $event.target.innerHTML.split(' ');
+    let pageNumber = 0;
+    pageNumber = parseInt(targets[1]);
+    this.page = Number(pageNumber);
     const searchDTO: SearchDTO = { pageSize: 10, page: this.page - 1 }
     await this.getListAuctions(searchDTO);
   }
