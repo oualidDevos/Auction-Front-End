@@ -277,6 +277,15 @@ td {
   border-bottom: 1px solid;
 }
 
-tbody, td, tfoot, th, thead, tr {
+tbody,
+td,
+tfoot,
+th,
+thead,
+tr {
   border: 1px solid grey !important;
+}
+
+.img--height {
+  height: 20px !important;
 }

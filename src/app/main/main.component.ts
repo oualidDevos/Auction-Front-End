@@ -23,10 +23,6 @@ currentUrl: any;
 
   ngOnInit(): void {
     this.currentUrl = this.router.url === '/';
-
-    console.log(this.authService.isUserAdmin());
-
-
     if( this.authService.isUserAdmin() === true ){
       this.router.navigate(['/auctions']);
     }

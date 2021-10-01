@@ -28,6 +28,7 @@ import { VimeModule } from '@vime/angular';
 import { AuctionsComponent } from './auctions/auctions.component';
 import { AuctionbidsComponent } from './auctionbids/auctionbids.component';
 import { BidderdetailComponent } from './bidderdetail/bidderdetail.component';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -51,6 +52,7 @@ export function tokenGetter(){
     AuctionsComponent,
     AuctionbidsComponent,
     BidderdetailComponent,
+    ForgotpasswordComponent,
   ],
   imports: [
     VimeModule,

@@ -28,15 +28,11 @@ export class InscriptionComponent implements OnInit {
     await this.activityService.getActivities().toPromise().then(
       m=> {
         this.activitiesViewModel = m;
-        // console.log(m);
       },
       err => {
         console.log(err);
       }
     )
-
-    // console.log(this.activitiesViewModel);
-
   }
 
 
@@ -79,7 +75,6 @@ export class InscriptionComponent implements OnInit {
 
        this.authSevice.registerHandler(userToRegister).toPromise().then(
          m=> {
-          //  console.log(m);
            this.registeredSuccess = true;
            this.router.navigate(["/login"])
          },
@@ -159,27 +154,4 @@ export class InscriptionComponent implements OnInit {
   {
     return this.dataRegistred.controls['activityId']
   }
-
-  // async loginHandler(email: string, password: string){
-  //   const credentials: LoginViewModel = {
-  //     password: password,
-  //     userName: email
-  //   }
-
-  //   await this.authService.loginHandler(credentials).toPromise().then(
-  //     m=> {
-  //       const token = (<any>m).token;
-  //       sessionStorage.setItem("jwt", token);
-  //       this.isValidLogin = true;
-  //       this.router.navigate(["/main"])
-
-
-  //     },
-  //     err => {
-  //       this.isValidLogin = false;
-  //       console.log(err);
-  //     }
-  //   );
-  // }
-
 }

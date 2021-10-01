@@ -2,6 +2,7 @@ import { ShowProductViewModel } from './../viewModels/ShowProductViewModel';
 import { Component, Input, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 // import { ShowProductViewModel } from '../viewModels/ShowProductViewModel';
 
 @Component({
@@ -11,9 +12,10 @@ import { Router } from '@angular/router';
 })
 export class BidCardsComponent implements OnInit {
 
-  constructor(private sanitizer: DomSanitizer, private router: Router) { }
+  constructor(private sanitizer: DomSanitizer, private router: Router, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
+    // this.spinner.show();
   }
 
   rowsToCreate: number = 0;

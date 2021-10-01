@@ -25,8 +25,8 @@
               class="row"
               #form
             >
-              <div class="col-sm-12 col-md-1 col-lg-1 m-2">
-                <label for="#" style="padding: 5px"> النشاط: </label>
+              <div class="col-sm-12 col-md-2 col-lg-2 m-2">
+                <label for="#" style="padding: 5px"> الترتيب حسب: </label>
               </div>
               <div class="col-sm-12 col-md-4 col-lg-4 m-2">
                 <select
@@ -35,12 +35,16 @@
                   id=""
                   class="form-control"
                 >
-                <option selected value="DESC">من اعلى الى ادنى ثمن</option>
-                <option value="ASC">من ادنى الى اعلى ثمن</option>
+                  <option selected value="DESC">من اعلى الى ادنى ثمن</option>
+                  <option value="ASC">من ادنى الى اعلى ثمن</option>
                 </select>
               </div>
               <div class="col-sm-12 col-md-1 col-lg-1 m-2">
-                <button type="submit" class="btn btn-primary form-control" style="text-align: center;">
+                <button
+                  type="submit"
+                  class="btn btn-primary form-control"
+                  style="text-align: center"
+                >
                   بحث
                 </button>
               </div>
@@ -68,35 +72,45 @@
             >
               <td class="border-bottom-0">
                 <div class="">
-                  <span style="font-size: large">{{ product.amount | number: "4.0" }}</span>
+                  <span style="font-size: large">{{
+                    product.amount | number: "4.0"
+                  }}</span>
                 </div>
               </td>
               <td class="border-bottom-0">
                 <span style="font-size: large"
-                  >{{ product.rentAmount | number: "4.0" }} </span
-                >
+                  >{{ product.rentAmount | number: "4.0" }}
+                </span>
               </td>
               <td class="border-bottom-0">
                 <span style="font-size: large">{{
-                  product.bidDate| date:'shortDate'
+                  product.bidDate | date: "shortDate"
                 }}</span>
               </td>
-              <td class="border-bottom-0" routerLink="/bidder/{{product.bidderId}}">
-                <span style="font-size: large; cursor: pointer;">{{
+              <td
+                class="border-bottom-0"
+                routerLink="/bidder/{{ product.bidderId }}"
+              >
+                <span style="font-size: large; cursor: pointer">{{
                   product.bidder.identityCard
                 }}</span>
               </td>
               <td>
                 <span>
-                  {{ product.bidder.firstName }}  {{ product.bidder.lastName }}
+                  {{ product.bidder.firstName }} {{ product.bidder.lastName }}
                 </span>
               </td>
               <td>
-                <button class="btn btn-primary" routerLink="/bidder/{{product.bidderId}}">مزيد من المعلومات</button>
+                <button
+                  class="btn btn-primary"
+                  routerLink="/bidder/{{ product.bidderId }}"
+                >
+                  <img class="img--height" src="assets/MoreData.png" alt="" />
+                </button>
               </td>
             </tr>
             <tr *ngIf="list.length == 0">
-              <td [colSpan]="7" style="text-align: center;">لا بوجد معلومات</td>
+              <td [colSpan]="7" style="text-align: center">لا بوجد معلومات</td>
             </tr>
           </tbody>
         </table>
@@ -111,7 +125,5 @@
     [directionLinks]="false"
   ></ngb-pagination>
   <!-- </div> -->
-  <button class="btn btn-success" routerLink="/auctions">
-    جميع المزادات
-  </button>
+  <button class="btn btn-success" routerLink="/auctions">جميع المزادات</button>
 </section>

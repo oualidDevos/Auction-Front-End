@@ -45,7 +45,11 @@
                 </select>
               </div>
               <div class="col-sm-12 col-md-1 col-lg-1 m-2">
-                <button type="submit" class="btn btn-primary form-control"  style="text-align: center;">
+                <button
+                  type="submit"
+                  class="btn btn-primary form-control"
+                  style="text-align: center"
+                >
                   بحث
                 </button>
               </div>
@@ -93,21 +97,27 @@
               </td>
               <td class="border-bottom-0">
                 <span style="font-size: large">{{
-                  product.startDate | date: 'shortDate'
+                  product.startDate | date: "shortDate"
                 }}</span>
               </td>
               <td
                 class="border-bottom-0"
                 (click)="detailProduct(product.productId)"
               >
-                <span class="btn btn-secondary" style="font-size: large; cursor: pointer">مزيد من المعلومات</span>
+                <span
+                  class="btn btn-primary"
+                  style="font-size: large; cursor: pointer"
+                  ><img class="img--height" src="assets/MoreData.png" alt=""
+                /></span>
               </td>
               <td class="border-bottom-0" routerLink="/bids/{{ product.id }}">
-                <span  class="btn btn-success" style="font-size: large"> لائحة المزايدات </span>
+                <span class="btn btn-success" style="font-size: large"
+                  ><img class="img--height" src="assets/List.png" alt=""
+                /></span>
               </td>
             </tr>
             <tr *ngIf="list.length == 0">
-              <td [colSpan]="8" style="text-align: center;">لا بوجد معلومات</td>
+              <td [colSpan]="8" style="text-align: center">لا بوجد معلومات</td>
             </tr>
           </tbody>
         </table>
@@ -121,5 +131,10 @@
     (click)="nextPageHandler($event)"
     [directionLinks]="false"
   ></ngb-pagination>
+
+<!--
+  <button (click)="dowbload()">
+    dsd
+  </button> -->
   <!-- </div> -->
 </section>

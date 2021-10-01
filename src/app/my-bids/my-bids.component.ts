@@ -46,9 +46,6 @@ export class MyBidsComponent implements OnInit {
         }
       )
     });
-
-    console.log(this.myOwnBidsViewModel);
-
   }
 
   getAttachement(contentType: any, bytes: any): any {

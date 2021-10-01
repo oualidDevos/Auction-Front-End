@@ -21,8 +21,6 @@ export class LoginComponent implements OnInit {
   }
 
   keyup(event: any, email: string, password: string){
-    console.log(event);
-
     this.loginHandler(email, password);
   }
 

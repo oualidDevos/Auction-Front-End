@@ -33,9 +33,9 @@ export class DetailComponent implements OnInit {
 
   showSpinner() {
     this.spinner.show();
-    setTimeout(() => {
-      this.spinner.hide();
-    }, 5000);
+    // setTimeout(() => {
+    //   this.spinner.hide();
+    // }, 5000);
   }
 
   isUserAdmin() {
@@ -49,7 +49,6 @@ export class DetailComponent implements OnInit {
     this.productId = Number(this.route.snapshot.paramMap.get('id'));
 
     await this.productDetails(this.productId);
-    // console.log(this.ProductDetailsViewModel?.data.attachments);
     if( this.ProductDetailsViewModel?.error != null ){
       this.router.navigate(["/main"]);
     }else{
@@ -62,8 +61,10 @@ export class DetailComponent implements OnInit {
           this.oldValue = this.currentBid;
           this.rentValue = this.ProductDetailsViewModel.data[0].bidsNumber === 0 ? 0 : this.ProductDetailsViewModel.data[0].currentRentBid + 100
 
-          if( this.currenuImageDisplayed === undefined )
-            this.currenuImageDisplayed = "https://c.tenor.com/tEBoZu1ISJ8AAAAC/spinning-loading.gif"
+          if( this.currenuImageDisplayed === undefined ){
+            // this.currenuImageDisplayed = "https://c.tenor.com/tEBoZu1ISJ8AAAAC/spinning-loading.gif"{
+              this.showSpinner();
+            }
 
           this.percentageToPayFrom = (Number(this.currentBid) * 0.05) + this.currentBid;
           this.dataRegistred = this.fb.group({
@@ -91,7 +92,6 @@ export class DetailComponent implements OnInit {
     .then(
       m => {
         this.ProductDetailsViewModel = m;
-        // console.log(this.ProductDetailsViewModel)
       },
       err => {
         this.error = true;
@@ -108,9 +108,14 @@ export class DetailComponent implements OnInit {
 
         if( this.attachements ){
           if( this.attachements.length > 0 ){
-            console.log(m);
+            this.spinner.hide();
             this.currenuImageDisplayed = this.getAttachement(this.attachements[0].contentType, this.attachements[0].file)
           }
+        }else{
+           setTimeout(() => {
+            this.spinner.hide();
+            this.currenuImageDisplayed = "assets/store.png"
+          }, 5000);
         }
       }
     )
@@ -129,9 +134,6 @@ export class DetailComponent implements OnInit {
   }
 
   Decriment() {
-
-    console.log();
-
     if( this.currentBid < this.oldValue && this.currentRentValue < this.rentValue)
     {
       this.oldValue -= 2000;

@@ -2,8 +2,9 @@
   <div class="row" >
     <div class="col-sm-12 col-lg-4 col-md-4 mb-3 mr-3 mb-1"  style="cursor: pointer;" routerLink="/bid/{{product.productId}}" *ngFor="let product of ShowProductViewModel?.data">
         <div class="wrapper card" >
-          <img class="card-img-top" *ngIf="product.mainImage != null" [src]="getAttachement(product.mainImage.contentType, product.mainImage.file) " alt="Card image cap">
+          <img class="card-img-top" *ngIf="product.mainImage != null" [src]="getAttachement(product.mainImage.contentType, product.mainImage.file) " alt="Magazin N° {{product.productId}}">
           <img class="card-img-top" *ngIf="product.mainImage == null" src="https://c.tenor.com/tEBoZu1ISJ8AAAAC/spinning-loading.gif" />
+          <!-- <img class="card-img-top" *ngIf="product.mainImage == null" src="https://c.tenor.com/tEBoZu1ISJ8AAAAC/spinning-loading.gif" /> -->
           <div class="card-body">
               <h5 class="card-text"> {{ product.title }}</h5>
             <small>

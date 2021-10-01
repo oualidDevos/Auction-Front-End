@@ -69,5 +69,4 @@ export class AuctionbidsComponent implements OnInit {
   formatDate(dateToFormat: string) {
     return dateToFormat.substring(0, 16).replace("T", " ");
   }
-
 }

@@ -21,17 +21,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class TrailerComponent implements OnInit {
 
-
-  change(event: any) {
-    // console.log(event);
-  }
-
-  // @Input() outlet: any;
   public getState(outlet: any) {
-    // console.log("qsdqsd");
-
-    // console.log(outlet);
-
     return outlet.activatedRouteData.state.activated;
   }
 
@@ -61,12 +51,6 @@ export class TrailerComponent implements OnInit {
     if( this.authService.isUSerAutheniticated() === true){
       this.router.navigate(['main'])
     }
-  //   video?.play().then(
-  //     m=> {
-  //       console.log(video)
-  //     }
-  //   );
-  //   console.log(video)
   }
 
 }

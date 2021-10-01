@@ -49,6 +49,12 @@ export class AuctionsComponent implements OnInit {
     )
   }
 
+  // dowbload(){
+
+  //   const url= window.URL.createObjectURL(blob);
+  //   window.open(url);
+  // }
+
   async getListAuctions(searchDTO: SearchDTO): Promise<void>{
     await this.auctionService.getListAuctions(searchDTO).toPromise()
       .then(

@@ -53,10 +53,6 @@ export class BidderdetailComponent implements OnInit {
         m => {
           this.pageCount = m.data[0].pageCount;
           this.list = m.data[0].list;
-          console.log('list');
-
-          console.log(this.list);
-
         }
       );
   }

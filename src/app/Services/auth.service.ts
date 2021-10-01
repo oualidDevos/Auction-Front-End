@@ -7,6 +7,7 @@ import { Observable, ObservableInput, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import jwt_decode from "jwt-decode";
+import { ForgotPasswordViewModel } from '../viewModels/ForgotPasswordViewModel';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,7 @@ export class AuthService {
   baseUrlAuth = environment.authApiLogin;
   baseUrlAuthRegister = environment.authApiRegister;
   baseUrlAuthRegisterAdmin = environment.authApiRegisterAdmin;
+  baseUrlForgotPassword = environment.authApiForgotPassword;
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -32,6 +34,10 @@ export class AuthService {
     return this.http.post<RegisterViewModel>(this.baseUrlAuthRegister, user, this.httpOptions);
   }
 
+
+  forgotPassword(forgotPasswordViewModel: ForgotPasswordViewModel){
+    return this.http.post<ForgotPasswordViewModel>(this.baseUrlForgotPassword, forgotPasswordViewModel, this.httpOptions)
+  }
 
   isUserAccountActivated() {
     return sessionStorage.getItem('isActivated');

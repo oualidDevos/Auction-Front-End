@@ -1,3 +1,4 @@
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { AuctionbidsComponent } from './auctionbids/auctionbids.component';
 import { AuctionsComponent } from './auctions/auctions.component';
 import { TestComponent } from './test/test.component';
@@ -17,19 +18,38 @@ import { AdminGuardService } from './guards/admin-guard.service';
 import { BidderdetailComponent } from './bidderdetail/bidderdetail.component';
 
 const routes: Routes = [
-  { path: '', component: TrailerComponent, data: {state: 'trailer'} },
-  { path: 'login', component: LoginComponent, data: {state: 'login'} },
-  { path: 'inscription', component: InscriptionComponent, data: {state: 'register'} },
-  // { path: 'main', component: MainComponent, canActivate: [AuthGuardService] },
+  { path: '', component: TrailerComponent, data: { state: 'trailer' } },
+  { path: 'login', component: LoginComponent, data: { state: 'login' } },
+  { path: 'forgot-password', component: ForgotpasswordComponent},
+  {
+    path: 'inscription',
+    component: InscriptionComponent,
+    data: { state: 'register' },
+  },
   { path: 'main', component: BidsComponent, canActivate: [AuthGuardService] },
-  { path: 'cards', component: BidCardsComponent, canActivate: [AuthGuardService] },
-  { path: 'bid/:id', component: DetailComponent, canActivate: [AuthGuardService] },
-  { path: 'mybids', component: MyBidsComponent, canActivate: [AuthGuardService] },
-  { path: 'auctions', component: AuctionsComponent, canActivate: [AuthGuardService, AdminGuardService]},
-  { path: 'bidder/:id', component: BidderdetailComponent, canActivate: [AuthGuardService, AdminGuardService]},
+  {
+    path: 'cards',
+    component: BidCardsComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'bid/:id',
+    component: DetailComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'mybids',
+    component: MyBidsComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'auctions',
+    component: AuctionsComponent,
+    canActivate: [AuthGuardService, AdminGuardService],
+  },
+  {path: 'bidder/:id',component: BidderdetailComponent,canActivate: [AuthGuardService, AdminGuardService]},
   { path: 'bids/:id', component: AuctionbidsComponent, canActivate: [AuthGuardService]},
-  // { path: '', redirectTo: '/main', pathMatch: 'full'},
-  { path: '**', component: NotfoundComponent }
+  { path: '**', component: NotfoundComponent },
 ];
 
 @NgModule({
